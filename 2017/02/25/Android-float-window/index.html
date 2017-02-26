@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="http://tajs.qq.com/stats?sId=" charset="UTF-8"></script>
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+  
+  <title>Android 悬浮窗显示 | 仰望天空</title>
+  <meta name="author" content="蓝石头">
+  
+  <meta name="description" content="[TOC]
+在AndroidManifest.xml中加入1&amp;lt;uses-permission android:name=&amp;quot;android.permission.SYSTEM_ALERT_WINDOW&amp;quot; /&amp;gt;
+创建悬浮窗布局文件floatwindow_layout.xm">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Android 悬浮窗显示"/>
+  <meta property="og:site_name" content="仰望天空"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/imgs/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="仰望天空" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header><div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/imgs/logo.png" alt="仰望天空" title="仰望天空"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name">仰望天空</h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li> <a href="/atom.xml">RSS</a> </li>
+				</ul>
+			</nav>			
+</div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="article-info clearfix">
+  <h1 itemprop="name">
+	Android 悬浮窗显示
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://aituming.github.io" title="蓝石头">蓝石头</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-02-25T11:16:38.000Z" itemprop="datePublished">2017-02-25</time>
+    Update date:<time datetime="2017-02-26T02:28:49.212Z" itemprop="dateModified">2017-02-26</time>
+    
+  </p>
+</header>
+    <div class="entry">
+		
+        <p>[TOC]</p>
+<h2 id="在AndroidManifest-xml中加入"><a href="#在AndroidManifest-xml中加入" class="headerlink" title="在AndroidManifest.xml中加入"></a>在AndroidManifest.xml中加入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; /&gt;</div></pre></td></tr></table></figure>
+<h2 id="创建悬浮窗布局文件"><a href="#创建悬浮窗布局文件" class="headerlink" title="创建悬浮窗布局文件"></a>创建悬浮窗布局文件</h2><p>floatwindow_layout.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;LinearLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/small_window_layout&quot;</div><div class="line">    android:layout_width=&quot;60dip&quot;</div><div class="line">    android:layout_height=&quot;25dip&quot;</div><div class="line">    android:background=&quot;@drawable/floatwindow&quot;</div><div class="line">    &gt;</div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/percent&quot;</div><div class="line">        android:layout_width=&quot;fill_parent&quot;</div><div class="line">        android:layout_height=&quot;fill_parent&quot;</div><div class="line">        android:gravity=&quot;center&quot;</div><div class="line">        android:textColor=&quot;#ffffff&quot;</div><div class="line">        /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="通过bindService启动服务"><a href="#通过bindService启动服务" class="headerlink" title="通过bindService启动服务"></a>通过bindService启动服务</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, FloatWindowService.class);</div><div class="line">   bindService(intent, mConnection, Context.BIND_AUTO_CREATE);</div></pre></td></tr></table></figure>
+<h2 id="创建FloatWindowService-java-类"><a href="#创建FloatWindowService-java-类" class="headerlink" title="创建FloatWindowService.java 类"></a>创建FloatWindowService.java 类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FloatWindowService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String TAG = <span class="string">"FloatWindowService"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> WindowManager.LayoutParams wmParams;</div><div class="line">    <span class="keyword">private</span> WindowManager mWindowManager;</div><div class="line">    <span class="keyword">private</span> FloatWindowView mFloatView;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> MainActivity mainActivity;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        Log.i(TAG, <span class="string">"onCreate"</span>);</div><div class="line">        <span class="comment">//</span></div><div class="line">        initWindowParams();</div><div class="line">        initView();</div><div class="line">        mWindowManager.addView(mFloatView, wmParams);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</div><div class="line">        Log.i(TAG, <span class="string">"onBind"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ShowHomePageBinder();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="keyword">if</span> (mFloatView != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="comment">//移除悬浮窗口</span></div><div class="line">            Log.i(TAG, <span class="string">"removeView"</span>);</div><div class="line">            mWindowManager.removeView(mFloatView);</div><div class="line">        &#125;</div><div class="line">        Log.i(TAG, <span class="string">"onDestroy"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line"><span class="comment">//        mFloatView = LayoutInflater.from(getApplication()).inflate(R.layout.floatwindow_layout, null);</span></div><div class="line">        mFloatView = <span class="keyword">new</span> FloatWindowView(getApplicationContext());</div><div class="line">        mFloatView.setParams(wmParams);</div><div class="line">        mFloatView.setMoveThreshold(<span class="number">5</span>);</div><div class="line">        mFloatView.setClickable(<span class="keyword">true</span>);</div><div class="line">        mFloatView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                Log.d(TAG, <span class="string">"click float window...."</span>);</div><div class="line">                <span class="keyword">if</span> (mainActivity == <span class="keyword">null</span>) &#123;</div><div class="line">                    Log.d(TAG, <span class="string">"main activity is null"</span>);</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                Log.d(TAG, <span class="string">"tabhost setCurrentTab to home page"</span>);</div><div class="line">                mainActivity.onKeyDown(MainActivity.KEYCODE_F0, <span class="keyword">new</span> KeyEvent(KeyEvent.ACTION_DOWN, MainActivity.KEYCODE_F0));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 初始化 LayoutParams</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWindowParams</span><span class="params">()</span> </span>&#123;</div><div class="line">        mWindowManager = (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);</div><div class="line">        wmParams = <span class="keyword">new</span> WindowManager.LayoutParams();</div><div class="line">        wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;</div><div class="line">        wmParams.format = PixelFormat.TRANSLUCENT;</div><div class="line">        wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;</div><div class="line">        wmParams.gravity = Gravity.LEFT | Gravity.TOP;</div><div class="line">        wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">        wmParams.height = WindowManager.LayoutParams.WRAP_CONTENT;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMainActivity</span><span class="params">(MainActivity activity)</span> </span>&#123;</div><div class="line">        mainActivity = activity;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShowHomePageBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> FloatWindowService <span class="title">getFloatWindowService</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> FloatWindowService.<span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="自定义FloatWindowView"><a href="#自定义FloatWindowView" class="headerlink" title="自定义FloatWindowView"></a>自定义FloatWindowView</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FloatWindowView</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录悬浮窗的宽度</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> viewWidth;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录悬浮窗的高度</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> viewHeight;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 用于更新悬浮窗的位置</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> WindowManager windowManager;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 悬浮窗的参数</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> WindowManager.LayoutParams mParams;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录当前手指位置在屏幕上的横坐标值</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> xInScreen;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录当前手指位置在屏幕上的纵坐标值</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> yInScreen;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录手指按下时在屏幕上的横坐标的值</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> xDownInScreen;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录手指按下时在屏幕上的纵坐标的值</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> yDownInScreen;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录手指按下时在悬浮窗的View上的横坐标的值</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> xInView;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 记录手指按下时在悬浮窗的View上的纵坐标的值</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> yInView;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 点击监听器</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> OnClickListener mClickLinstener;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 设置点击响应灵敏度</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> threshold = <span class="number">30</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FloatWindowView</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        LayoutInflater.from(context).inflate(R.layout.floatwindow_layout, <span class="keyword">this</span>);</div><div class="line">        View view = findViewById(R.id.float_window_layout);</div><div class="line"><span class="comment">//        TextView goHomeView = (TextView)findViewById(R.id.gohome);</span></div><div class="line">        viewWidth = view.getLayoutParams().width;</div><div class="line">        viewHeight = view.getLayoutParams().height;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (event.getAction()) &#123;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">                <span class="comment">// 手指按下时记录必要数据,纵坐标的值都需要减去状态栏高度</span></div><div class="line">                xInView = event.getX();</div><div class="line">                yInView = event.getY();</div><div class="line">                xDownInScreen = event.getRawX();</div><div class="line">                yDownInScreen = event.getRawY();</div><div class="line">                xInScreen = event.getRawX();</div><div class="line">                yInScreen = event.getRawY();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">                xInScreen = event.getRawX();</div><div class="line">                yInScreen = event.getRawY();</div><div class="line">                <span class="comment">// 手指移动的时候更新小悬浮窗的位置</span></div><div class="line">                updateViewPosition();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</div><div class="line"><span class="comment">//                // 如果手指离开屏幕时，xDownInScreen和xInScreen相等，且yDownInScreen和yInScreen相等，则视为触发了单击事件。</span></div><div class="line">                <span class="keyword">if</span> (needIntercept()) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    mClickLinstener.onClick(<span class="keyword">this</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 将悬浮窗的参数传入，用于更新悬浮窗的位置。</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> params</div><div class="line">     *            悬浮窗的参数</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setParams</span><span class="params">(WindowManager.LayoutParams params)</span> </span>&#123;</div><div class="line">        mParams = params;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 更新悬浮窗在屏幕中的位置。</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateViewPosition</span><span class="params">()</span> </span>&#123;</div><div class="line">        mParams.x = (<span class="keyword">int</span>) (xInScreen - xInView);</div><div class="line">        mParams.y = (<span class="keyword">int</span>) (yInScreen - yInView);</div><div class="line">        windowManager.updateViewLayout(<span class="keyword">this</span>, mParams);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 是否拦截</div><div class="line">     * <span class="doctag">@return</span> true:拦截;false:不拦截.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">needIntercept</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (Math.abs(xDownInScreen - xInScreen) &gt; threshold || Math.abs(yDownInScreen - yInScreen) &gt; threshold) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoveThreshold</span><span class="params">(<span class="keyword">int</span> threshold)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.threshold = threshold;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(OnClickListener l)</span> </span>&#123;</div><div class="line">        mClickLinstener = l;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="在主类中定义成员变量并将MainActivity的引用传给FloatWindowService"><a href="#在主类中定义成员变量并将MainActivity的引用传给FloatWindowService" class="headerlink" title="在主类中定义成员变量并将MainActivity的引用传给FloatWindowService"></a>在主类中定义成员变量并将MainActivity的引用传给FloatWindowService</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> FloatWindowService mFloatWindowService = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> ServiceConnection mConnection = <span class="keyword">new</span> ServiceConnection() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</div><div class="line">            Log.d(TAG, <span class="string">"onServiceDisconnected"</span>);</div><div class="line">            mFloatWindowService = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</div><div class="line">            Log.d(TAG, <span class="string">"onServiceConnected..."</span>);</div><div class="line">            mFloatWindowService = ((FloatWindowService.ShowHomePageBinder)service).getFloatWindowService();</div><div class="line">            <span class="keyword">if</span> (mFloatWindowService != <span class="keyword">null</span>) &#123;</div><div class="line">                mFloatWindowService.setMainActivity(MainActivity.<span class="keyword">this</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>参考博客<br><a href="http://blog.csdn.net/guolin_blog/article/details/8689140" target="_blank" rel="external"><em> Android桌面悬浮窗效果实现，仿360手机卫士悬浮窗效果</em></a><br><a href="http://blog.csdn.net/qq_17250009/article/details/52908791" target="_blank" rel="external"><em>Android 使用WindowManager实现悬浮窗及源码解析</em></a><br><a href="http://fulerbakesi.iteye.com/blog/1592209" target="_blank" rel="external">service回调activity</a><br><a href="http://blog.csdn.net/hhhccckkk/article/details/44037719" target="_blank" rel="external">service获取activity引用</a></p>
+
+    </div>
+    <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/android/">android</a>, <a href="/tags/悬浮窗/">悬浮窗</a>
+  </div>
+
+		<div class="bdsharebuttonbox">
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_count" data-cmd="count"></a>
+</div>
+<script>
+window._bd_share_config=
+{
+	"common":{
+		"bdSnsKey":{},
+		"bdText":"",
+		"bdMini":"2",
+		"bdMiniList":false,
+		"bdPic":"",
+		"bdStyle":"0",
+		"bdSize":"24"
+	},
+	"share":{},
+	"image":{
+		"viewList":["qzone","tsina","tqq","renren","weixin","fbook","twi"],
+		"viewText":"分享到：",
+		"viewSize":"24"
+	},
+	"selectShare":{
+		"bdContainerClass":null,
+		"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin","fbook","twi"]
+	}
+};
+with(document)0[
+	(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)
+];
+</script>    
+        <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+ <nav id="pagination" >
+    
+    <a href="/2017/02/26/question-about-collections-in-java/" class="alignleft prev" title="java中关于集合的面试题">java中关于集合的面试题</a>
+    
+    
+    <a href="/2017/02/25/build-blog/" class="alignright next" title="github + hexo + node 搭建博客">github + hexo + node 搭建博客</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+	
+	<section id="comment">
+		<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="2017/02/25/Android-float-window/" data-title="Android 悬浮窗显示" data-url="http://aituming.github.io/2017/02/25/Android-float-window/"></div>
+		<!-- 多说评论框 end -->
+		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+		<script type="text/javascript">
+		var duoshuoQuery = {short_name:""};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+		<!-- 多说公共JS代码 end -->
+	</section>
+	
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:aituming.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/blog/">blog</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/悬浮窗/" style="font-size: 10px;">悬浮窗</a> <a href="/tags/集合，-面试，-java/" style="font-size: 10px;">集合， 面试， java</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="140" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1923610190&verifier=6af5ad6a&colors=fafafa,fafafa,666666,0082cb,ecfbfd&dpc=1"></iframe>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://opiece.me" title="Chillax's Blog" target="_blank">Chillax</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+		
+		<a href="mailto:wlyuan1115@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/huangjunhui/concise" target="_blank" title="Concise">Concise</a> © 2017 
+		
+		<a href="http://aituming.github.io/about" target="_blank" title="蓝石头">蓝石头</a>
+		
+		</p>
+</div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/counter.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<div id="totop" style="position:fixed;bottom:100px;right:10px;cursor: pointer;">
+<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
+</div>
+<script src="/js/totop.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+

@@ -15,18 +15,18 @@
 	})();
 	</script>
   
-  <title>github + hexo + node 搭建博客 | 仰望天空</title>
+  <title>java中关于集合的面试题 | 仰望天空</title>
   <meta name="author" content="蓝石头">
   
-  <meta name="description" content="[TOC]
-安装nodejs源码安装源码下载地址1源码下载地址2
-1234$ ./configure $ make $ make install $ cp /usr/local/bin/node /usr/sbin/
-二进制文件安装12$ sudo cp -r node-v0.10.28  /opt">
+  <meta name="description" content="ArrayList是否为线程安全的？ArrayList在添加一个元素的时候，它可能会有两步来完成：
+
+在 Items[Size] 的位置存放此元素； 
+增大 Size 的值。在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；而如果是在多线程情况下，比">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="github + hexo + node 搭建博客"/>
+  <meta property="og:title" content="java中关于集合的面试题"/>
   <meta property="og:site_name" content="仰望天空"/>
 
   
@@ -84,45 +84,37 @@
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	github + hexo + node 搭建博客
+	java中关于集合的面试题
   </h1>
   <p class="article-author">By
     
       <a href="http://aituming.github.io" title="蓝石头">蓝石头</a>
     </p>
   <p class="article-time">
-    <time datetime="2017-02-25T03:22:34.000Z" itemprop="datePublished">2017-02-25</time>
-    Update date:<time datetime="2017-02-25T09:53:43.294Z" itemprop="dateModified">2017-02-25</time>
+    <time datetime="2017-02-26T09:28:41.000Z" itemprop="datePublished">2017-02-26</time>
+    Update date:<time datetime="2017-02-26T14:03:18.933Z" itemprop="dateModified">2017-02-26</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>[TOC]</p>
-<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><p><a href="https://github.com/joyent/node" target="_blank" rel="external">源码下载地址1</a><br><a href="http://nodejs.org/dist/" target="_blank" rel="external">源码下载地址2</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ./configure </div><div class="line">$ make </div><div class="line">$ make install </div><div class="line">$ cp /usr/<span class="built_in">local</span>/bin/node /usr/sbin/</div></pre></td></tr></table></figure>
-<h3 id="二进制文件安装"><a href="#二进制文件安装" class="headerlink" title="二进制文件安装"></a>二进制文件安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo cp -r node-v0.10.28  /opt/node</div><div class="line">$ sudo vi /etc/profile.d/node.sh</div></pre></td></tr></table></figure>
-<p>3.node.sh文件内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export NODE_HOME=/opt/node</div><div class="line">export PATH=$PATH:$NODE_HOME/bin</div><div class="line">export NODE_PATH=$PATH:$NODE_HOME/lib/node_modules</div></pre></td></tr></table></figure></p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>执行以下命令后出现警告：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure></p>
-<p>碰到警告，<br>[图]<br>执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm -g install npm</div><div class="line">$ npm install reinstall -g</div><div class="line">$ npm cache clean <span class="_">-f</span></div></pre></td></tr></table></figure></p>
-<p>或者尝试以下方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm uninstall lodash</div><div class="line">$ npm install lodash@latest.</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div><div class="line">$ ERROR Deployer not found: Git</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git –save</div></pre></td></tr></table></figure>
-<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p><a href="http://blog.csdn.net/v123411739/article/details/45227249" target="_blank" rel="external">Concise，一款为hexo设计的简约而漂亮的主题</a></p>
-<p>参考博客：<br><a href="使用hexo+github搭建免费个人博客详细教程"><em>使用hexo+github搭建免费个人博客详细教程</em></a><br><a href="http://blog.csdn.net/u014230646/article/details/51852695" target="_blank" rel="external"><em>Ubuntu下github pages+hexo搭建自己的博客</em></a></p>
+        <h2 id="ArrayList是否为线程安全的？"><a href="#ArrayList是否为线程安全的？" class="headerlink" title="ArrayList是否为线程安全的？"></a>ArrayList是否为线程安全的？</h2><p>ArrayList在添加一个元素的时候，它可能会有两步来完成：</p>
+<ol>
+<li>在 Items[Size] 的位置存放此元素； </li>
+<li>增大 Size 的值。<br>在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；<br>而如果是在多线程情况下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调度线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍然等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。 那好，现在我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不安全”了。</li>
+</ol>
+<h2 id="ArrayList的大小是如何自动增加的？"><a href="#ArrayList的大小是如何自动增加的？" class="headerlink" title="ArrayList的大小是如何自动增加的？"></a>ArrayList的大小是如何自动增加的？</h2><p>当试图在一个arraylist中增加一个对象时，Java会去检查arraylist，确保已存在的数组中有足够的容量（默认是10），如果没有足够的容量，那么就会新建一个长度更长（是原来数组长度的1.5倍）的数组，旧的数组就会使用Arrays.copyOf()方法被复制到新的数组中。<br>源代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * Appends the specified element to the end of this list.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> e element to be appended to this list</div><div class="line">     * <span class="doctag">@return</span> &lt;tt&gt;true&lt;/tt&gt; (as specified by &#123;<span class="doctag">@link</span> Collection#add&#125;)</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">    ensureCapacity(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></div><div class="line">    elementData[size++] = e;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">     * Increases the capacity of this &lt;tt&gt;ArrayList&lt;/tt&gt; instance, if</div><div class="line">     * necessary, to ensure that it can hold at least the number of elements</div><div class="line">     * specified by the minimum capacity argument.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span>   minCapacity   the desired minimum capacity</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</div><div class="line">    modCount++;</div><div class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">    <span class="keyword">if</span> (minCapacity &gt; oldCapacity) &#123;</div><div class="line">        Object oldData[] = elementData;</div><div class="line">        <span class="keyword">int</span> newCapacity = (oldCapacity * <span class="number">3</span>)/<span class="number">2</span> + <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (newCapacity &lt; minCapacity)</div><div class="line">        newCapacity = minCapacity;</div><div class="line">            <span class="comment">// minCapacity is usually close to size, so this is a win:</span></div><div class="line">            elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">    &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="什么是-fail-fast-机制"><a href="#什么是-fail-fast-机制" class="headerlink" title="什么是 fail-fast 机制?"></a>什么是 fail-fast 机制?</h2><p>fail-fast机制在遍历一个集合时，当集合结构被修改，会抛出Concurrent Modification Exception。<br>fail-fast会在以下两种情况下抛出ConcurrentModificationException<br>（1）单线程环境<br>集合被创建后，在遍历它的过程中修改了结构。<br>注意 remove()方法会让expectModcount和modcount 相等，所以是不会抛出这个异常。<br>（2）多线程环境<br>当一个线程在遍历这个集合，而另一个线程对这个集合的结构进行了修改。</p>
+<h2 id="fail-fast的解决办法"><a href="#fail-fast的解决办法" class="headerlink" title="fail-fast的解决办法"></a>fail-fast的解决办法</h2><p>方案一：在遍历过程中所有涉及到改变modCount值得地方全部加上synchronized或者直接使用Collections.synchronizedList，这样就可以解决。但是不推荐，因为增删造成的同步锁可能会阻塞遍历操作。<br>方案二：使用CopyOnWriteArrayList来替换ArrayList。推荐使用该方案。</p>
+<p><a href="http://blog.csdn.net/ch717828/article/details/46892051" target="_blank" rel="external">fail-fast 与 fast-safe的区别</a><br><a href="http://blog.csdn.net/chenssy/article/details/38151189" target="_blank" rel="external">Java提高篇（三四）—–fail-fast机制</a></p>
 
     </div>
     <footer>
         
-  
-  <div class="categories">
-    <a href="/categories/blog/">blog</a>
-  </div>
-
         
   
   <div class="tags">
-    <a href="/tags/github/">github</a>, <a href="/tags/hexo/">hexo</a>, <a href="/tags/blog/">blog</a>
+    <a href="/tags/集合，-面试，-java/">集合， 面试， java</a>
   </div>
 
 		<div class="bdsharebuttonbox">
@@ -170,10 +162,8 @@ with(document)0[
 
  <nav id="pagination" >
     
-    <a href="/2017/02/25/Android-float-window/" class="alignleft prev" title="Android 悬浮窗显示">Android 悬浮窗显示</a>
     
-    
-    <a href="/2017/02/19/hello-world/" class="alignright next" title="Hello World">Hello World</a>
+    <a href="/2017/02/25/Android-float-window/" class="alignright next" title="Android 悬浮窗显示">Android 悬浮窗显示</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -183,7 +173,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2017/02/25/build-blog/" data-title="github + hexo + node 搭建博客" data-url="http://aituming.github.io/2017/02/25/build-blog/"></div>
+		<div class="ds-thread" data-thread-key="2017/02/26/question-about-collections-in-java/" data-title="java中关于集合的面试题" data-url="http://aituming.github.io/2017/02/26/question-about-collections-in-java/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
